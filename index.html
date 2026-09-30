@@ -1,20 +1,38 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Conciliación We Capital</title>
-  <meta name="description" content="Herramienta de conciliación contable de We Capital">
+
+  <meta
+    name="description"
+    content="Herramienta de conciliación contable de We Capital"
+  >
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <div class="app">
+
+    <!-- SIDEBAR -->
     <aside class="sidebar">
+
       <div class="brand">
         <div class="brand-symbol">W</div>
+
         <div class="brand-copy">
           <strong>WE CAPITAL</strong>
           <span>Conciliación</span>
@@ -22,130 +40,408 @@
       </div>
 
       <nav class="nav">
-        <button class="nav-link active" data-view="overview">
-          <span class="nav-icon">▦</span><span>Resumen</span>
+
+        <button
+          class="nav-link active"
+          data-view="overview"
+        >
+          <span class="nav-icon">▦</span>
+          <span>Resumen</span>
         </button>
-        <button class="nav-link" data-view="accounts">
-          <span class="nav-icon">≡</span><span>Cuentas</span>
+
+        <button
+          class="nav-link"
+          data-view="accounts"
+        >
+          <span class="nav-icon">≡</span>
+          <span>Cuentas</span>
         </button>
-        <button class="nav-link" data-view="transactions">
-          <span class="nav-icon">↳</span><span>Movimientos</span>
+
+        <button
+          class="nav-link"
+          data-view="transactions"
+        >
+          <span class="nav-icon">↳</span>
+          <span>Movimientos</span>
         </button>
+
       </nav>
 
       <div class="sidebar-footer">
+
         <div class="status-dot"></div>
-        <span id="fileLabel">Esperando archivo</span>
+
+        <span id="fileLabel">
+          Esperando archivo
+        </span>
+
       </div>
+
     </aside>
 
+
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="content">
+
+      <!-- HEADER -->
       <header class="header">
+
         <div>
-          <p class="overline">CONTABILIDAD / CONCILIACIÓN</p>
-          <h1>Conciliación We Capital</h1>
-          <p class="subtitle">Revisión y análisis de movimientos contables.</p>
+
+          <p class="overline">
+            CONTABILIDAD / CONCILIACIÓN
+          </p>
+
+          <h1>
+            Conciliación We Capital
+          </h1>
+
+          <p class="subtitle">
+            Revisión y análisis de movimientos contables.
+          </p>
+
         </div>
+
 
         <div class="header-actions">
+
           <label class="button button-dark">
-            <input type="file" id="fileInput" accept=".csv,text/csv">
-            <span>Importar CSV</span>
+
+            <input
+              type="file"
+              id="fileInput"
+              accept=".csv,text/csv"
+            >
+
+            <span>
+              Importar CSV
+            </span>
+
           </label>
+
         </div>
+
       </header>
 
+
+      <!-- ESTADO VACÍO -->
       <section id="emptyView" class="empty-view">
+
         <div class="empty-inner">
-          <div class="empty-symbol">↥</div>
-          <h2>Importa tu archivo contable</h2>
-          <p>Selecciona el CSV exportado desde <strong>JOURNAL_ENTRIES</strong> para comenzar.</p>
+
+          <div class="empty-symbol">
+            ↥
+          </div>
+
+          <h2>
+            Importa tu archivo contable
+          </h2>
+
+          <p>
+            Selecciona el CSV exportado desde
+            <strong>JOURNAL_ENTRIES</strong>
+            para comenzar.
+          </p>
+
           <label class="drop-button">
-            <input type="file" id="emptyFileInput" accept=".csv,text/csv">
+
+            <input
+              type="file"
+              id="emptyFileInput"
+              accept=".csv,text/csv"
+            >
+
             Seleccionar archivo
+
           </label>
-          <small>La información se procesa localmente en este navegador.</small>
+
+          <small>
+            La información se procesa localmente en este navegador.
+          </small>
+
         </div>
+
       </section>
 
+
+      <!-- DASHBOARD -->
       <section id="dataView" class="hidden">
+
+
+        <!-- FILTROS -->
         <div class="control-row">
+
           <div class="search">
+
             <span>⌕</span>
-            <input id="search" type="search" placeholder="Buscar cuenta, cliente, broker, invoice...">
+
+            <input
+              id="search"
+              type="search"
+              placeholder="Buscar cuenta, cliente, broker, invoice..."
+            >
+
           </div>
-          <select id="accountFilter"><option value="">Cuenta</option></select>
-          <select id="clientFilter"><option value="">Cliente</option></select>
-          <select id="brokerFilter"><option value="">Broker</option></select>
-          <button id="resetFilters" class="button button-light">Restablecer</button>
+
+
+          <select id="accountFilter">
+            <option value="">
+              Cuenta
+            </option>
+          </select>
+
+
+          <select id="clientFilter">
+            <option value="">
+              Cliente
+            </option>
+          </select>
+
+
+          <select id="brokerFilter">
+            <option value="">
+              Broker
+            </option>
+          </select>
+
+
+          <button
+            id="resetFilters"
+            class="button button-light"
+          >
+            Restablecer
+          </button>
+
         </div>
 
+
+        <!-- MÉTRICAS -->
         <div class="metrics">
+
           <div class="metric">
-            <span class="metric-label">Movimientos</span>
-            <strong id="metricRows">0</strong>
-            <span class="metric-note" id="metricInvoices">0 invoices</span>
+
+            <span class="metric-label">
+              Movimientos
+            </span>
+
+            <strong id="metricRows">
+              0
+            </strong>
+
+            <span
+              class="metric-note"
+              id="metricInvoices"
+            >
+              0 invoices
+            </span>
+
           </div>
+
+
           <div class="metric">
-            <span class="metric-label">Débitos</span>
-            <strong id="metricDebit">$0.00</strong>
-            <span class="metric-note">Total filtrado</span>
+
+            <span class="metric-label">
+              Débitos
+            </span>
+
+            <strong id="metricDebit">
+              $0.00
+            </strong>
+
+            <span class="metric-note">
+              Total filtrado
+            </span>
+
           </div>
+
+
           <div class="metric">
-            <span class="metric-label">Créditos</span>
-            <strong id="metricCredit">$0.00</strong>
-            <span class="metric-note">Total filtrado</span>
+
+            <span class="metric-label">
+              Créditos
+            </span>
+
+            <strong id="metricCredit">
+              $0.00
+            </strong>
+
+            <span class="metric-note">
+              Total filtrado
+            </span>
+
           </div>
+
+
           <div class="metric metric-balance">
-            <span class="metric-label">Diferencia</span>
-            <strong id="metricDiff">$0.00</strong>
-            <span class="metric-note">Débitos frente a créditos</span>
+
+            <span class="metric-label">
+              Diferencia
+            </span>
+
+            <strong id="metricDiff">
+              $0.00
+            </strong>
+
+            <span class="metric-note">
+              Débitos frente a créditos
+            </span>
+
           </div>
+
         </div>
 
+
+        <!-- CUENTAS -->
         <div class="section-heading">
+
           <div>
-            <p class="overline">ESTRUCTURA CONTABLE</p>
-            <h2>Cuentas</h2>
+
+            <p class="overline">
+              ESTRUCTURA CONTABLE
+            </p>
+
+            <h2>
+              Cuentas
+            </h2>
+
           </div>
-          <button id="exportButton" class="button button-light">Exportar vista</button>
+
+          <button
+            id="exportButton"
+            class="button button-light"
+          >
+            Exportar vista
+          </button>
+
         </div>
 
-        <div id="accountList" class="account-list"></div>
+
+        <div
+          id="accountList"
+          class="account-list"
+        ></div>
+
       </section>
 
-      <section id="accountsView" class="hidden view-section">
+
+      <!-- VISTA CUENTAS -->
+      <section
+        id="accountsView"
+        class="hidden view-section"
+      >
+
         <div class="section-heading">
+
           <div>
-            <p class="overline">DETALLE</p>
-            <h2>Cuentas contables</h2>
+
+            <p class="overline">
+              DETALLE
+            </p>
+
+            <h2>
+              Cuentas contables
+            </h2>
+
           </div>
+
         </div>
-        <div id="accountsTable" class="table-shell"></div>
+
+        <div
+          id="accountsTable"
+          class="table-shell"
+        ></div>
+
       </section>
 
-      <section id="transactionsView" class="hidden view-section">
+
+      <!-- VISTA MOVIMIENTOS -->
+      <section
+        id="transactionsView"
+        class="hidden view-section"
+      >
+
         <div class="section-heading">
+
           <div>
-            <p class="overline">DETALLE</p>
-            <h2>Movimientos</h2>
+
+            <p class="overline">
+              DETALLE
+            </p>
+
+            <h2>
+              Movimientos
+            </h2>
+
           </div>
-          <button id="exportTransactions" class="button button-light">Exportar CSV</button>
+
+          <button
+            id="exportTransactions"
+            class="button button-light"
+          >
+            Exportar CSV
+          </button>
+
         </div>
-        <div id="transactionsTable" class="table-shell"></div>
+
+
+        <div
+          id="transactionsTable"
+          class="table-shell"
+        ></div>
+
       </section>
+
     </main>
+
   </div>
 
-  <div id="drawer" class="drawer hidden">
+
+  <!-- DRAWER DE DETALLE -->
+  <div
+    id="drawer"
+    class="drawer hidden"
+  >
+
     <div class="drawer-backdrop"></div>
+
+
     <aside class="drawer-panel">
-      <button id="closeDrawer" class="drawer-close">×</button>
-      <p class="overline">DETALLE DE CUENTA</p>
+
+      <button
+        id="closeDrawer"
+        class="drawer-close"
+      >
+        ×
+      </button>
+
+
+      <p class="overline">
+        DETALLE DE CUENTA
+      </p>
+
+
       <h2 id="drawerTitle"></h2>
-      <div id="drawerMeta" class="drawer-meta"></div>
+
+
+      <div
+        id="drawerMeta"
+        class="drawer-meta"
+      ></div>
+
+
       <div id="drawerTable"></div>
+
     </aside>
+
+  </div>
+
+
+  <script src="app.js"></script>
+
+</body>
+</html>
+```
+
   </div>
 
   <script src="app.js"></script>
